@@ -1,0 +1,30 @@
+.invoice-table{
+    width: 100%;
+    padding: 8px;
+}
+
+.invoice-table th{
+    background-color: #1394c4;
+    font-size: 16px;
+    color: white;
+    padding: 8px;
+}
+
+.invoice-table tbody tr{
+    border-bottom: 1px solid #eeeeee;
+    font-size: 15px;
+}
+
+.invoice-table tbody tr td{
+    padding: 8px;
+}
+
+.invoice-table tfoot tr td{
+    border-top: 2px solid #999999;
+    border-bottom: 2px solid #999999;
+    padding: 8px;
+}
+
+.text-right{
+    text-align: right;
+}

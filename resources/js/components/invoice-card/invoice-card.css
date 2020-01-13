@@ -1,0 +1,45 @@
+.invoice-item{
+    transition: all .2s;
+}
+
+.invoice-item:hover{
+    cursor: pointer;
+}
+
+.invoice-item:hover .overlay{
+    display: flex;
+}
+
+.invoice-card{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.invoice-title{
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.overlay{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    flex-direction: column;
+    animation: grow ease-out .3s;
+}
+
+@keyframes grow{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(100%);
+    }
+}
