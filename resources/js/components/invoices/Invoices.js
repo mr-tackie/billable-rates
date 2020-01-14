@@ -26,6 +26,8 @@ class Invoices extends React.Component {
             selectedItem: null
         };
 
+        this.ref = React.createRef();
+
         this.handleCancel = () => {
             this.setState({ showModal: false, selectedItem: null });
         };
@@ -78,41 +80,45 @@ class Invoices extends React.Component {
         if (selectedItem) {
             const rows = [];
             let total = 0;
-            for(const item of selectedItem.data){
-                rows.push(<tr key={`${item.employee_id}_${item.name}`}>
-                    <td>{item.employee_id}</td>
-                    <td>{item.no_of_hours}</td>
-                    <td>{item.unit_price}</td>
-                    <td className="text-right">{item.cost}</td>
-                </tr>);
-                total+=item.cost;
+            for (const item of selectedItem.data) {
+                rows.push(
+                    <tr key={`${item.employee_id}_${item.name}`}>
+                        <td>{item.employee_id}</td>
+                        <td>{item.no_of_hours}</td>
+                        <td>{item.unit_price}</td>
+                        <td className="text-right">{item.cost}</td>
+                    </tr>
+                );
+                total += item.cost;
             }
-            return (<div>
-                <p>
-                    Company Name: <b>{selectedItem.name}</b>
-                </p>
-                <table className="invoice-table">
-                    <thead>
-                        <tr>
-                            <th>Employee ID</th>
-                            <th>Number of hours</th>
-                            <th>Unit Price</th>
-                            <th className="text-right">Cost</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {rows}
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><b>Total</b></td>
-                            <td className="text-right">{total}</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>);
+            return (
+                <div ref={this.ref}>
+                    <p>
+                        Company Name: <b>{selectedItem.name}</b>
+                    </p>
+                    <table className="invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Number of hours</th>
+                                <th>Unit Price</th>
+                                <th className="text-right">Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>{rows}</tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <b>Total</b>
+                                </td>
+                                <td className="text-right">{total}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            );
         }
     }
 
@@ -145,12 +151,13 @@ class Invoices extends React.Component {
                 </Spin>
                 <Modal
                     visible={showModal}
-                    title={selectedItem ? `Invoice for ${selectedItem.name}` : ""}
+                    title={
+                        selectedItem ? `Invoice for ${selectedItem.name}` : ""
+                    }
                     onCancel={this.handleCancel}
                     width={720}
                     footer={[
-                        <Button key="print">Email</Button>,
-                        <Button key="download">Download</Button>
+                        <Button key="download-pdf">Download</Button>
                     ]}
                 >
                     {selectedItem ? this._renderInvoiceTable() : null}
