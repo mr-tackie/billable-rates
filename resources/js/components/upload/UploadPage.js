@@ -50,6 +50,7 @@ const UploadPage = ({ history }) => {
                 }
             } catch (err) {
                 if (err.response) {
+                    const response = err.response;
                     switch (response.status) {
                         case 500:
                             _showErrorDialog(response.statusText);
