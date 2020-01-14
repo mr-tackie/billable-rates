@@ -50,18 +50,7 @@ const UploadPage = ({ history }) => {
                 }
             } catch (err) {
                 if (err.response) {
-                    const response = err.response;
-                    switch (response.status) {
-                        case 500:
-                            _showErrorDialog(response.statusText);
-                            break;
-                        case 422:
-                            _showErrorDialog("Provide a valid CSV file");
-                            break;
-                        default:
-                            _showErrorDialog("Could not handle this request");
-                            break;
-                    }
+                    _showErrorDialog("Provide a valid CSV file.")
                 } else {
                     _showErrorDialog(
                         "There was an error processing your request. Try again"
