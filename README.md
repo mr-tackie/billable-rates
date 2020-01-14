@@ -2,7 +2,7 @@
 This project is developed with Laravel and React to generate invoices from a time table.
 
 ## Demo
-A demo to the project can be found <a href="https://billable-rates.herokuapp.com/invoices/">here</a>
+A demo to the project can be found <a href="https://billable-rates.herokuapp.com/">here</a>
 ## Requirements
 This project requires the following dependencies to run 
 1. PHP >= 7.1.3
