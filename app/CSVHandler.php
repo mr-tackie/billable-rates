@@ -6,7 +6,8 @@ class CSVHandler
 {
     public static function parseCSV($file)
     {
-        $extension = $file->getClientOriginalExtension();
+        try {
+            $extension = $file->getClientOriginalExtension();
         $line = 0;
         $parsed_data = array();
 
@@ -61,6 +62,9 @@ class CSVHandler
             }
         } else {
             return array("error" => true, "message" => "Provide a valid CSV file");
+        }
+        } catch (\Throwable $th) {
+            return array("error" => true, "message" => "A file must be passed as an argument");
         }
     }
 }
