@@ -26,8 +26,6 @@ class Invoices extends React.Component {
             selectedItem: null
         };
 
-        this.ref = React.createRef();
-
         this.handleCancel = () => {
             this.setState({ showModal: false, selectedItem: null });
         };
@@ -92,7 +90,7 @@ class Invoices extends React.Component {
                 total += item.cost;
             }
             return (
-                <div ref={this.ref}>
+                <div className="printable">
                     <p>
                         Company Name: <b>{selectedItem.name}</b>
                     </p>
@@ -157,7 +155,7 @@ class Invoices extends React.Component {
                     onCancel={this.handleCancel}
                     width={720}
                     footer={[
-                        <Button key="download-pdf">Download</Button>
+                        <Button key="print-pdf" onClick = {() => window.print()}>Print</Button>
                     ]}
                 >
                     {selectedItem ? this._renderInvoiceTable() : null}

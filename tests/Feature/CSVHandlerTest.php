@@ -35,4 +35,12 @@ class CSVHandlerTest extends TestCase
         $this->assertTrue($result['error']);
         $this->assertEquals($result['message'], "A file must be passed as an argument");
     }
+
+    public function csv_file_must_match_required_format(){
+        $file = UploadedFile::fake()->create('file.pdf', 0, 'application/pdf');
+        $result = CSVHandler::parseCSV($file);
+
+        $this->assertTrue($result['error']);
+        $this->assertEquals($result['message'], "Provide a valid CSV file");
+    }
 }
