@@ -8,7 +8,7 @@ This project requires the following dependencies to run
 3. Node and NPM 
 
 ## Installation
-1. First download or clone the project by running `git clone https://github.com/mr-tackie/billable-hours`
+1. First download or clone the project by running `git clone https://github.com/mr-tackie/billable-rates.git`
 2. Navigate to the project directory and install the required dependencies
 3. Run `composer install` to install composer dependencies
 4. Run `npm` install to install node dependencies
